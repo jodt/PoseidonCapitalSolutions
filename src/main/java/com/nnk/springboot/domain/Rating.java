@@ -5,10 +5,16 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "rating")
 public class Rating {
 
@@ -16,13 +22,13 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @NotBlank(message = "Account is mandatory")
+    @NotBlank(message = "This field is required")
     String moodysRating;
 
-    @NotBlank(message = "Account is mandatory")
+    @NotBlank(message = "This field is required")
     String sandPRating;
 
-    @NotBlank(message = "Account is mandatory")
+    @NotBlank(message = "This field is required")
     String fitchRating;
 
     @NotNull(message = "Cannot be null")
