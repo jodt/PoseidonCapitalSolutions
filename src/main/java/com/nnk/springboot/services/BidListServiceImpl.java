@@ -26,7 +26,7 @@ public class BidListServiceImpl implements BidListService {
 
     @Override
     public BidList saveBid(BidList bid) {
-        log.info("Try to add or update a new bid");
+        log.info("Try to add or update a bid");
         return this.bidListRepository.save(bid);
     }
 
