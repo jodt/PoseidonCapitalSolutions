@@ -44,6 +44,7 @@ public class CurveController {
 
     @PostMapping("/curvePoint/validate")
     public String validate(@Valid CurvePoint curvePoint, BindingResult result, Model model) {
+        log.info("POST /curvePoint/validate called -> start process to add a curve point");
         if (result.hasErrors()) {
             for (FieldError fieldError : result.getFieldErrors()) {
                 log.info("Error in form validation on field {}", fieldError.getField());
@@ -75,6 +76,7 @@ public class CurveController {
             return "curvePoint/update";
         }
         this.curvePointService.saveCurvePoint(curvePoint);
+        log.info("Process to update the curve point with id {} end successfully", id);
         return "redirect:/curvePoint/list";
     }
 
