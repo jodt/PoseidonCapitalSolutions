@@ -4,7 +4,6 @@ package com.nnk.springboot.domain;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,16 +21,15 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @NotBlank(message = "This field is required")
+    @NotBlank(message = "Moody's rating is required")
     String moodysRating;
 
-    @NotBlank(message = "This field is required")
+    @NotBlank(message = "S and P is required")
     String sandPRating;
 
-    @NotBlank(message = "This field is required")
+    @NotBlank(message = "Fitch's rating is required")
     String fitchRating;
 
-    @NotNull(message = "Cannot be null")
     @Min(value = 1, message = "Must be greater than or equal to 1")
     Integer orderNumber;
 
