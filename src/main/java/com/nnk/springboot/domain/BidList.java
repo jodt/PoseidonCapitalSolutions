@@ -29,8 +29,7 @@ public class BidList {
     @NotBlank(message = "Type is mandatory")
     String type;
 
-    @NotNull(message = "Cannot be null")
-    @Min(value = 1, message = "Must be greater than or equal to 1")
+    @Min(value = 0, message = "Must be greater than or equal to 0")
     Double bidQuantity;
 
     Double askQuantity;
