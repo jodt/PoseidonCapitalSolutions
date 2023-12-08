@@ -23,9 +23,11 @@ public class BidList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
+    @NotNull(message = "Cannot be null")
     @NotBlank(message = "Account is mandatory")
     String account;
 
+    @NotNull(message = "Cannot be null")
     @NotBlank(message = "Type is mandatory")
     String type;
 
