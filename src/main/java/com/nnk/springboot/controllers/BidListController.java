@@ -44,7 +44,7 @@ public class BidListController {
 
     @PostMapping("/bidList/validate")
     public String validate(@Valid BidList bid, BindingResult result, Model model) {
-        log.info("POST bidList/validate called -> start process to add a bid");
+        log.info("POST /bidList/validate called -> start process to add a bid");
         if (result.hasErrors()) {
             for (FieldError fieldError : result.getFieldErrors()) {
                 log.info("Error in form validation on field {}", fieldError.getField());
@@ -68,7 +68,7 @@ public class BidListController {
     @PostMapping("/bidList/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
                             BindingResult result, Model model) {
-        log.info("GET /bidList/update/{} called -> start of the process to update the bid", id);
+        log.info("POST /bidList/update/{} called -> start of the process to update the bid", id);
         if (result.hasErrors()) {
             for (FieldError fieldError : result.getFieldErrors()) {
                 log.info("Error in form validation on field {}", fieldError.getField());

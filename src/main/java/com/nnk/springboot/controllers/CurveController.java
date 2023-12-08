@@ -68,7 +68,7 @@ public class CurveController {
     @PostMapping("/curvePoint/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
                             BindingResult result, Model model) {
-        log.info("GET /curvePoint/update/{} called -> start of the process to update the curve point", id);
+        log.info("POST /curvePoint/update/{} called -> start of the process to update the curve point", id);
         if (result.hasErrors()) {
             for (FieldError fieldError : result.getFieldErrors()) {
                 log.info("Error in form validation on field {}", fieldError.getField());

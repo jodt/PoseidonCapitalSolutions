@@ -67,7 +67,7 @@ public class RatingController {
     @PostMapping("/rating/update/{id}")
     public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating,
                                BindingResult result, Model model) {
-        log.info("GET /rating/update/{} called -> start of the process to update the rating", id);
+        log.info("POST /rating/update/{} called -> start of the process to update the rating", id);
         if (result.hasErrors()){
             for (FieldError fieldError : result.getFieldErrors()) {
                 log.info("Error in form validation on field {}", fieldError.getField());
