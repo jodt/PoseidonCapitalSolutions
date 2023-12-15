@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot</title>
+</head>
+<body>
+<h3>Page Not Found</h3>
+<div>
+    Logged in user: <b th:inline="text" class="user"> [[${#authentication.getName()}]] </b>
+</div>
+<div>
+    <span>Return to <a href="/bidList/list">Bid List</a></span>
+</div>
+<div>
+    or
+    <form th:action="@{/logout}" method="POST">
+        <input type="submit" value="Logout"/>
+    </form>
+</div>
+<p class="error" th:text="${errorMsg}">Error</p>
+</body>
+</html>
