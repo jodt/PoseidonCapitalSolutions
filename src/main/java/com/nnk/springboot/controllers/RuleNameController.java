@@ -3,8 +3,10 @@ package com.nnk.springboot.controllers;
 import com.nnk.springboot.domain.RuleName;
 import com.nnk.springboot.exeception.ResourceNotFoundException;
 import com.nnk.springboot.services.RuleNameService;
+import com.nnk.springboot.utils.UserUtils;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,9 +29,10 @@ public class RuleNameController {
     }
 
     @RequestMapping("/ruleName/list")
-    public String home(Model model) {
+    public String home(Model model, Authentication authentication) {
         log.info("GET /ruleName/list called");
         List<RuleName> ruleNames = this.ruleNameService.findAllRuleNames();
+        model.addAttribute("isAdmin", UserUtils.isAdmin(authentication));
         model.addAttribute("ruleNames",ruleNames);
         log.info("Display the ruleName list page");
         return "ruleName/list";

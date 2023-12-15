@@ -3,8 +3,10 @@ package com.nnk.springboot.controllers;
 import com.nnk.springboot.domain.Rating;
 import com.nnk.springboot.exeception.ResourceNotFoundException;
 import com.nnk.springboot.services.RatingService;
+import com.nnk.springboot.utils.UserUtils;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,10 +29,11 @@ public class RatingController {
     }
 
     @RequestMapping("/rating/list")
-    public String home(Model model) {
+    public String home(Model model, Authentication authentication) {
         log.info("GET /rating/list called");
         List<Rating> ratings = this.ratingService.findAllRating();
         log.info("{} rating(s) found", ratings.size());
+        model.addAttribute("isAdmin", UserUtils.isAdmin(authentication));
         model.addAttribute("ratings",ratings);
         log.info("Display the rating list page");
         return "rating/list";

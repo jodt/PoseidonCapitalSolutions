@@ -3,8 +3,10 @@ package com.nnk.springboot.controllers;
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.exeception.ResourceNotFoundException;
 import com.nnk.springboot.services.BidListService;
+import com.nnk.springboot.utils.UserUtils;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,10 +29,11 @@ public class BidListController {
     }
 
     @RequestMapping("/bidList/list")
-    public String home(Model model) {
+    public String home(Model model, Authentication authentication) {
         log.info("GET /bidList/list called");
         List<BidList> bidLists = this.bidListService.getAllBid();
         log.info("{} bid(s) found", bidLists.size());
+        model.addAttribute("isAdmin", UserUtils.isAdmin(authentication));
         model.addAttribute("bidLists", bidLists);
         log.info("Display the bid list page");
         return "bidList/list";

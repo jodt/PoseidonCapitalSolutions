@@ -3,8 +3,10 @@ package com.nnk.springboot.controllers;
 import com.nnk.springboot.domain.CurvePoint;
 import com.nnk.springboot.exeception.ResourceNotFoundException;
 import com.nnk.springboot.services.CurvePointService;
+import com.nnk.springboot.utils.UserUtils;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,10 +29,11 @@ public class CurveController {
     }
 
     @RequestMapping("/curvePoint/list")
-    public String home(Model model) {
+    public String home(Model model, Authentication authentication) {
         log.info("GET /curvePoint/list called");
         List<CurvePoint> curvePoints = this.curvePointService.findAllCurvePoints();
         log.info("{} curve point(s) found", curvePoints.size());
+        model.addAttribute("isAdmin", UserUtils.isAdmin(authentication));
         model.addAttribute("curvePoints", curvePoints);
         log.info("Display the curve point list page");
         return "curvePoint/list";

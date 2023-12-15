@@ -3,8 +3,10 @@ package com.nnk.springboot.controllers;
 import com.nnk.springboot.domain.Trade;
 import com.nnk.springboot.exeception.ResourceNotFoundException;
 import com.nnk.springboot.services.TradeService;
+import com.nnk.springboot.utils.UserUtils;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,9 +29,10 @@ public class TradeController {
     }
 
     @RequestMapping("/trade/list")
-    public String home(Model model) {
+    public String home(Model model, Authentication authentication) {
         log.info("GET /trade/list called");
         List<Trade> trades = this.tradeService.findAllTrades();
+        model.addAttribute("isAdmin", UserUtils.isAdmin(authentication));
         model.addAttribute("trades", trades);
         log.info("Display the trade list page");
         return "trade/list";
