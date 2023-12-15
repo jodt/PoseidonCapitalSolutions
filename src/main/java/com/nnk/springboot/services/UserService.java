@@ -4,6 +4,7 @@ import com.nnk.springboot.domain.User;
 import com.nnk.springboot.exeception.ResourceNotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
@@ -14,5 +15,7 @@ public interface UserService {
     void deleteUserById(Integer id);
 
     User findUserById(Integer id) throws ResourceNotFoundException;
+
+    Boolean isUserAlreadySaved(String username);
 
 }

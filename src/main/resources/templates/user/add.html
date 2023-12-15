@@ -12,7 +12,9 @@
     <div class="row">
         <h2>Add New User</h2>
     </div>
-
+    <div class="alert alert-danger" role="alert" th:if="${param.error}">
+        User already register
+    </div>
     <div class="row">
         <form action="#" th:action="@{/user/validate}" th:object="${user}" method="post" class="form-horizontal"
               style="width: 100%">

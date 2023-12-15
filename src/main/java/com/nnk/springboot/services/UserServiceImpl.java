@@ -6,6 +6,7 @@ import com.nnk.springboot.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -36,5 +37,10 @@ public class UserServiceImpl implements UserService{
         return this.userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User with id " + id + " not found"));
     }
+
+    public Boolean isUserAlreadySaved(String username){
+        return !this.userRepository.findByUsername(username).isEmpty();
+    }
+
 
 }
