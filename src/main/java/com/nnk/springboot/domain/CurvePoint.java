@@ -27,10 +27,10 @@ public class CurvePoint {
 
     Timestamp asOfDate;
 
-    @NotBlank(message = "Term is required")
+    @NotNull(message = "Term is required")
     Double term;
 
-    @NotBlank(message = "Value is required")
+    @NotNull(message = "Value is required")
     Double value;
 
     Timestamp creationDate;
