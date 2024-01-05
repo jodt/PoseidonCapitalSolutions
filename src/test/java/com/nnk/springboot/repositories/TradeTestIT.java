@@ -1,7 +1,6 @@
-package com.nnk.springboot;
+package com.nnk.springboot.repositories;
 
 import com.nnk.springboot.domain.Trade;
-import com.nnk.springboot.repositories.TradeRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,16 +11,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 import java.util.Optional;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class TradeTests {
+public class TradeTest {
 
     @Autowired
     private TradeRepository tradeRepository;
 
     @Test
     public void tradeTest() {
-        Trade trade = new Trade("Trade Account", "Type");
+        Trade trade = new Trade();
+        trade.setAccount("Trade Account");
+        trade.setType("Type");
+        trade.setBuyQuantity(10d);
 
         // Save
         trade = tradeRepository.save(trade);

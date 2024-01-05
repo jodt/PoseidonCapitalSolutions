@@ -1,9 +1,8 @@
-package com.nnk.springboot;
+package com.nnk.springboot.repositories;
 
 import com.nnk.springboot.domain.Rating;
-import com.nnk.springboot.repositories.RatingRepository;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,16 +11,23 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 import java.util.Optional;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class RatingTests {
+public class RatingTest {
 
     @Autowired
     private RatingRepository ratingRepository;
 
+
     @Test
     public void ratingTest() {
-        Rating rating = new Rating("Moodys Rating", "Sand PRating", "Fitch Rating", 10);
+        Rating rating;
+
+        rating = Rating.builder()
+                .moodysRating("Moodys Rating")
+                .sandPRating("Sand PRating")
+                .fitchRating("Fitch Rating")
+                .orderNumber(10)
+                .build();
 
         // Save
         rating = ratingRepository.save(rating);
