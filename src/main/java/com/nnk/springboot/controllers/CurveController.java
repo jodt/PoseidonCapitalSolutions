@@ -40,7 +40,7 @@ public class CurveController {
     }
 
     @GetMapping("/curvePoint/add")
-    public String addBidForm(CurvePoint curvePoint) {
+    public String addCurvePointForm(CurvePoint curvePoint) {
         log.info("GET /curvePoint/add called -> display add curve point form");
         return "curvePoint/add";
     }
@@ -69,7 +69,7 @@ public class CurveController {
     }
 
     @PostMapping("/curvePoint/update/{id}")
-    public String updateBid(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
+    public String updateCurvePoint(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
                             BindingResult result, Model model) {
         log.info("POST /curvePoint/update/{} called -> start of the process to update the curve point", id);
         if (result.hasErrors()) {
@@ -84,7 +84,7 @@ public class CurveController {
     }
 
     @GetMapping("/curvePoint/delete/{id}")
-    public String deleteBid(@PathVariable("id") Integer id, Model model) {
+    public String deleteCurvePoint(@PathVariable("id") Integer id, Model model) {
         log.info("GET /curvePoint/delete/{} called -> Start of the process to delete the curve point with id {}", id, id);
         this.curvePointService.deleteCurvePointById(id);
         log.info("Process to delete a curve point end successfully");
