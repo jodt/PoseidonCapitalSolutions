@@ -3,16 +3,14 @@ package com.nnk.springboot.repositories;
 import com.nnk.springboot.domain.CurvePoint;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
-public class CurvePointTest {
+public class CurvePointTestIT {
 
     @Autowired
     private CurvePointRepository curvePointRepository;
