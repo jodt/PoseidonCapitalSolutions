@@ -19,6 +19,13 @@ public class SecurityConfig {
         this.userDetailsService = userDetailsService;
     }
 
+    /**
+     * This method is used to configure the security filter chain which is responsible
+     * for all security (protection of application URLs, redirection to the login form, etc.)
+     * @param http
+     * @return a securityFilterChain
+     * @throws Exception
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -36,11 +43,19 @@ public class SecurityConfig {
         return http.build();
     }
 
+    /**
+     * This method is used to encode the password with Bcrypt
+     * @return new instance of BCryptPasswordEncoder
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Ths method is used to handle redirection in case of successful connection
+     * @return new instance of CustomSuccessHandler
+     */
     @Bean
     public CustomSuccessHandler successHandler(){
         return new CustomSuccessHandler();

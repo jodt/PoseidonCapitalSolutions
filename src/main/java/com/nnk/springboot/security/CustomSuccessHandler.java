@@ -12,6 +12,14 @@ import java.io.IOException;
 @Slf4j
 public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
+    /**
+     * This method is used to redirect the user after a successful login
+     * based on their authorities (USER or ADMIN)
+     * @param request
+     * @param response
+     * @param authentication
+     * @throws IOException
+     */
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
 

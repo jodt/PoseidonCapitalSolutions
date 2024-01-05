@@ -2,6 +2,7 @@ package com.nnk.springboot.security;
 
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.repositories.UserRepository;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,6 +22,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
 
+    /**
+     * This method is responsible for retrieving a user from the database based on the username
+     * entered in the login form. If the user exists, a userDetails that provides core user information is return.
+     * This allows Spring Security to verify that the passwords are the same to allow the connection.
+     * @param username
+     * @return a userDetails that provides core user information.
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = this.userRepository.findByUsername(username);
@@ -29,7 +38,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("Username not found");
         }
 
-        List<SimpleGrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(user.get().getRole()));
+        List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(user.get().getRole()));
 
         UserDetails userDetails = org.springframework.security.core.userdetails.User.
                 withUsername(user.get().getUsername())
