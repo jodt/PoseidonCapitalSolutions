@@ -22,6 +22,8 @@ public class SecurityConfig {
     /**
      * This method is used to configure the security filter chain which is responsible
      * for all security (protection of application URLs, redirection to the login form, etc.)
+     * Each request is filtered to check if the user can access the requested URL.
+     * URLs can be accessible to everyone, or just if the user has sufficient authorizations or if he is authenticated.
      * @param http
      * @return a securityFilterChain
      * @throws Exception

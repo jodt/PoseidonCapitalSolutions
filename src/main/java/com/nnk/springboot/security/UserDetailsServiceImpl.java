@@ -25,7 +25,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     /**
      * This method is responsible for retrieving a user from the database based on the username
      * entered in the login form. If the user exists, a userDetails that provides core user information is return.
-     * This allows Spring Security to verify that the passwords are the same to allow the connection.
      * @param username
      * @return a userDetails that provides core user information.
      * @throws UsernameNotFoundException
