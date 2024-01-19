@@ -16,7 +16,7 @@ To use Poseidon, follow these steps:
 
 ### Database (Two methods):
 
-* You must install mysql and set your username and password.
+* :warning: You must install mysql and set your username and password. :warning:
 
 ### First method : 
 * Open a terminal and use the command :
