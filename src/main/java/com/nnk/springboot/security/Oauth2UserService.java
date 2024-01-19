@@ -22,7 +22,4 @@ public class Oauth2UserService extends DefaultOAuth2UserService {
         return new CustomAuth2User(super.loadUser(oAuth2UserRequest));
     }
 
-    Authentication authentication;
-    AuthenticatedPrincipal authenticatedPrincipal;
-
 }
