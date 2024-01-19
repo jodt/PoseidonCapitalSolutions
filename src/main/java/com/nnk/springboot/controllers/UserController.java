@@ -41,8 +41,6 @@ public class UserController {
         }
 
         if (!result.hasErrors()) {
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            user.setPassword(encoder.encode(user.getPassword()));
             userService.saveUser(user);
             model.addAttribute("users", userService.findAllUsers());
             return "redirect:/user/list";
@@ -65,8 +63,6 @@ public class UserController {
             return "user/update";
         }
 
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setPassword(encoder.encode(user.getPassword()));
         user.setId(id);
         userService.saveUser(user);
         model.addAttribute("users", userService.findAllUsers());
