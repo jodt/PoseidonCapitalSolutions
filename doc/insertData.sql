@@ -1,0 +1,2 @@
+insert into Users(fullname, username, password, role) values("Administrator", "admin", "$2a$10$VfcQQtNoJip36evWCXEzjuk6crcRRPCvEaEoXQxSTIMqLsQ6Vqd2C", "ADMIN");
+insert into Users(fullname, username, password, role) values("User", "user", "$2a$10$QVFHSvjnbVIbtAggWi0C4ezDtPqdndwKdO/4NXNlb2RdWa2o/6Fzq", "USER")
