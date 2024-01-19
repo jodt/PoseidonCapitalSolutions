@@ -3,7 +3,6 @@ package com.nnk.springboot.services;
 import com.nnk.springboot.domain.Trade;
 import com.nnk.springboot.exeception.ResourceNotFoundException;
 import com.nnk.springboot.repositories.TradeRepository;
-import jakarta.validation.constraints.Min;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

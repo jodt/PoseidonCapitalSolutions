@@ -4,7 +4,6 @@ import com.nnk.springboot.domain.User;
 import com.nnk.springboot.exeception.ResourceNotFoundException;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
 
