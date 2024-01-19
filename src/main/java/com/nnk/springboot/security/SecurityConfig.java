@@ -14,9 +14,11 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final UserDetailsServiceImpl userDetailsService;
+    private final Oauth2UserService oauth2UserService;
 
-    public SecurityConfig(UserDetailsServiceImpl userDetailsService) {
+    public SecurityConfig(UserDetailsServiceImpl userDetailsService, Oauth2UserService oauth2UserService) {
         this.userDetailsService = userDetailsService;
+        this.oauth2UserService = oauth2UserService;
     }
 
     /**
@@ -39,8 +41,13 @@ public class SecurityConfig {
                                 .anyRequest().authenticated()
                         )
                 .userDetailsService(this.userDetailsService)
+                .oauth2Client(Customizer.withDefaults())
                 .formLogin((login) -> login
                         .successHandler(successHandler()))
+                .oauth2Login(oauth -> oauth
+                        .successHandler(successHandler())
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .userService(oauth2UserService)))
                 .logout(Customizer.withDefaults());
         return http.build();
     }
